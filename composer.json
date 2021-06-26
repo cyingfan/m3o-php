@@ -1,0 +1,31 @@
+{
+  "name": "yingfan/m3o-php",
+  "description": "M3O client for PHP",
+  "version": "0.0.1",
+  "type": "library",
+  "license": "MIT",
+  "keywords": ["M3O", "API"],
+  "authors": [
+    {
+      "name": "Ying Fan Chong",
+      "email": "yingfan@outlook.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4.0|>=8.0.0",
+    "ext-json": "*",
+
+    "guzzlehttp/guzzle": "^7.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "M3O\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.90"
+  },
+  "scripts": {
+    "phpstan": "@php vendor/bin/phpstan analyse -c phpstan.neon.dist"
+  }
+}
