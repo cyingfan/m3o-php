@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace M3O\Model\Db;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class CreateInput implements ModelInterface
+class CreateInput extends AbstractModel
 {
     private ?string $table;
     /** @var array<string, mixed> */

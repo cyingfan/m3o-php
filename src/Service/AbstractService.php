@@ -9,7 +9,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use InvalidArgumentException;
 use JsonException;
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractService
@@ -75,10 +75,10 @@ abstract class AbstractService
      */
     protected function parseResponseAsModel(ResponseInterface $response, string $model)
     {
-        if (!is_subclass_of($model, ModelInterface::class)) {
+        if (!is_subclass_of($model, AbstractModel::class)) {
             throw new InvalidArgumentException('Invalid class string. Class must be instance of ModelInterface');
         }
-        if ($response->getStatusCode() === 500) {
+        if ($response->getStatusCode() !== 200) {
             return null;
         }
         $responseJson = $this->parseResponseAsArray($response);
@@ -96,10 +96,10 @@ abstract class AbstractService
      */
     protected function parseResponseAsModels(ResponseInterface $response, string $model): array
     {
-        if (!is_subclass_of($model, ModelInterface::class)) {
+        if (!is_subclass_of($model, AbstractModel::class)) {
             throw new InvalidArgumentException('Invalid class string. Class must be instance of ModelInterface');
         }
-        if ($response->getStatusCode() === 500) {
+        if ($response->getStatusCode() !== 200) {
             return [];
         }
         $responseJson = $this->parseResponseAsArray($response);

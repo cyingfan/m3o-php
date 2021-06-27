@@ -5,9 +5,9 @@ namespace M3O\Model\Db;
 
 
 use InvalidArgumentException;
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class ReadInput implements ModelInterface
+class ReadInput extends AbstractModel
 {
     public const ORDER_ASC = 'asc';
     public const ORDER_DESC = 'desc';
@@ -81,36 +81,22 @@ class ReadInput implements ModelInterface
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getQuery(): ?string
     {
         return $this->query;
     }
 
-    /**
-     * @param string|null $query
-     * @return ReadInput
-     */
     public function setQuery(?string $query): ReadInput
     {
         $this->query = $query;
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTable(): ?string
     {
         return $this->table;
     }
 
-    /**
-     * @param string|null $table
-     * @return ReadInput
-     */
     public function setTable(?string $table): ReadInput
     {
         $this->table = $table;

@@ -4,9 +4,9 @@
 namespace M3O\Model\Currency;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class Code implements ModelInterface
+class Code extends AbstractModel
 {
     private string $currency;
     private string $name;

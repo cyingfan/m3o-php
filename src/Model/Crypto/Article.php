@@ -7,9 +7,9 @@ namespace M3O\Model\Crypto;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class Article implements ModelInterface
+class Article extends AbstractModel
 {
     private DateTimeInterface $date;
     private string $description;

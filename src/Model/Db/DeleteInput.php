@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace M3O\Model\Db;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class DeleteInput implements ModelInterface
+class DeleteInput extends AbstractModel
 {
     private string $id;
     private ?string $table;

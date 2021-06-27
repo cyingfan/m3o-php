@@ -4,9 +4,9 @@
 namespace M3O\Model\Currency;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class Rates implements ModelInterface
+class Rates extends AbstractModel
 {
     private string $code;
     /** @var array<string, float> */

@@ -1,7 +1,7 @@
 {
   "name": "yingfan/m3o-php",
   "description": "M3O client for PHP",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "library",
   "license": "MIT",
   "keywords": ["M3O", "API"],
@@ -15,7 +15,8 @@
     "php": ">=7.4.0|>=8.0.0",
     "ext-json": "*",
 
-    "guzzlehttp/guzzle": "^7.3"
+    "guzzlehttp/guzzle": "^7.3",
+    "giggsey/libphonenumber-for-php": "^8.12"
   },
   "autoload": {
     "psr-4": {

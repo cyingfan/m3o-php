@@ -7,7 +7,7 @@ namespace M3O\Model\Currency;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Exception;
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
 class HistoryOutput extends HistoryInput
 {

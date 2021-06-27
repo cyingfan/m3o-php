@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace M3O\Model\Crypto;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class News implements ModelInterface
+class News extends AbstractModel
 {
     /** @var Article[] */
     private array $articles;

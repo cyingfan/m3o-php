@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace M3O\Model\Currency;
 
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class ConvertInput implements ModelInterface
+class ConvertInput extends AbstractModel
 {
     private string $from;
     private string $to;

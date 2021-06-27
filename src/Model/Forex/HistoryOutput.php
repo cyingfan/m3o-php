@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace M3O\Model\Crypto;
+namespace M3O\Model\Forex;
 
 
 use DateTimeImmutable;
@@ -9,7 +9,7 @@ use DateTimeInterface;
 use Exception;
 use M3O\Model\AbstractModel;
 
-class History extends AbstractModel
+class HistoryOutput extends AbstractModel
 {
     private float $close;
     private DateTimeInterface $date;
@@ -24,7 +24,7 @@ class History extends AbstractModel
         return $this->close;
     }
 
-    public function setClose(float $close): History
+    public function setClose(float $close): HistoryOutput
     {
         $this->close = $close;
         return $this;
@@ -37,9 +37,10 @@ class History extends AbstractModel
 
     /**
      * @param DateTimeInterface|string $date
+     * @return HistoryOutput
      * @throws Exception
      */
-    public function setDate($date): History
+    public function setDate($date): HistoryOutput
     {
         if (is_string($date)) {
             $date = new DateTimeImmutable($date);
@@ -53,7 +54,7 @@ class History extends AbstractModel
         return $this->high;
     }
 
-    public function setHigh(float $high): History
+    public function setHigh(float $high): HistoryOutput
     {
         $this->high = $high;
         return $this;
@@ -64,7 +65,7 @@ class History extends AbstractModel
         return $this->low;
     }
 
-    public function setLow(float $low): History
+    public function setLow(float $low): HistoryOutput
     {
         $this->low = $low;
         return $this;
@@ -75,7 +76,7 @@ class History extends AbstractModel
         return $this->open;
     }
 
-    public function setOpen(float $open): History
+    public function setOpen(float $open): HistoryOutput
     {
         $this->open = $open;
         return $this;
@@ -86,7 +87,7 @@ class History extends AbstractModel
         return $this->symbol;
     }
 
-    public function setSymbol(string $symbol): History
+    public function setSymbol(string $symbol): HistoryOutput
     {
         $this->symbol = $symbol;
         return $this;
@@ -97,7 +98,7 @@ class History extends AbstractModel
         return $this->volume;
     }
 
-    public function setVolume(float $volume): History
+    public function setVolume(float $volume): HistoryOutput
     {
         $this->volume = $volume;
         return $this;
@@ -106,16 +107,16 @@ class History extends AbstractModel
     /**
      * @throws Exception
      */
-    public static function fromArray(array $array): self
+    public static function fromArray(array $array): HistoryOutput
     {
-        return (new self())
-            ->setClose((float) ($array['close'] ?? 0))
+        return (new HistoryOutput())
+            ->setClose((float) ($array['close'] ?? 0.0))
             ->setDate($array['date'] ?? 'now')
-            ->setHigh((float) ($array['high'] ?? 0))
-            ->setLow((float) ($array['low'] ?? 0))
-            ->setOpen((float) ($array['open'] ?? 0))
+            ->setHigh((float) ($array['high'] ?? 0.0))
+            ->setLow((float) ($array['low'] ?? 0.0))
+            ->setOpen((float) ($array['open'] ?? 0.0))
             ->setSymbol((string) ($array['symbol'] ?? ''))
-            ->setVolume((float) ($array['volume'] ?? 0));
+            ->setVolume((float) ($array['volume'] ?? 0.0));
     }
 
     public function toArray(): array

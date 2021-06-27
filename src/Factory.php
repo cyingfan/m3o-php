@@ -5,13 +5,14 @@ namespace M3O;
 
 
 use GuzzleHttp\Client;
+use M3O\Util\PhoneValidator;
 use RuntimeException;
 
 class Factory
 {
     public function getM3O(): M3O
     {
-        return new M3O($this->getHttpClient());
+        return new M3O($this->getHttpClient(), $this->getPhoneValidator());
     }
 
     public function getHttpClient(): Client
@@ -31,5 +32,10 @@ class Factory
                 'Authorization' => sprintf('Bearer %s', $authToken)
             ]
         ]);
+    }
+
+    public function getPhoneValidator(): PhoneValidator
+    {
+        return new PhoneValidator();
     }
 }

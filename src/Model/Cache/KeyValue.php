@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace M3O\Model\Cache;
 
-use M3O\Model\ModelInterface;
+use M3O\Model\AbstractModel;
 
-class KeyValue implements ModelInterface
+class KeyValue extends AbstractModel
 {
     private string $key;
     /** @var string|int */
