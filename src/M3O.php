@@ -13,6 +13,9 @@ use M3O\Service\File as FileService;
 use M3O\Service\Forex as ForexService;
 use M3O\Service\Geocoding as GeocodingService;
 use M3O\Service\Helloworld as HelloworldService;
+use M3O\Service\Id as IdService;
+use M3O\Service\Image as ImageService;
+use M3O\Service\Ip as IpService;
 use M3O\Util\PhoneValidator;
 
 class M3O
@@ -29,6 +32,9 @@ class M3O
     private ?ForexService $forexService;
     private ?GeocodingService $geocodingService;
     private ?HelloworldService $helloworldService;
+    private ?IdService $idService;
+    private ?ImageService $imageService;
+    private ?IpService $ipService;
 
     public function __construct(ClientInterface $client, PhoneValidator $phoneValidator)
     {
@@ -109,5 +115,28 @@ class M3O
         return $this->helloworldService;
     }
 
+    public function getIdService(): IdService
+    {
+        if ($this->idService === null) {
+            $this->idService = new IdService($this->client);
+        }
+        return $this->idService;
+    }
+
+    public function getImageService(): ImageService
+    {
+        if ($this->imageService === null) {
+            $this->imageService = new ImageService($this->client);
+        }
+        return $this->imageService;
+    }
+
+    public function getIpService(): IpService
+    {
+        if ($this->ipService === null) {
+            $this->ipService = new IpService($this->client);
+        }
+        return $this->ipService;
+    }
 
 }

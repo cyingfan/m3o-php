@@ -20,7 +20,7 @@ M3O Client for PHP
 use M3O\Factory;
 
 $m3o = (new Factory())->getM3O();
-$m3o->getCryptoService()->news('BTC');
+echo $m3o->getHelloworldService()->call('John Doe'), "\n";
 ```
 
 ## Service completion status 
@@ -33,9 +33,9 @@ $m3o->getCryptoService()->news('BTC');
 - [X] [forex](https://m3o.com/forex)
 - [X] [geocoding](https://m3o.com/geocoding)
 - [X] [helloword](https://m3o.com/helloword)
-- [ ] [id](https://m3o.com/id)
-- [ ] [image](https://m3o.com/image)
-- [ ] [ip](https://m3o.com/ip)
+- [X] [id](https://m3o.com/id)
+- [X] [image](https://m3o.com/image)
+- [X] [ip](https://m3o.com/ip)
 - [ ] [location](https://m3o.com/location)
 - [ ] [otp](https://m3o.com/otp)
 - [ ] [routing](https://m3o.com/routing)

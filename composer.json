@@ -1,7 +1,7 @@
 {
   "name": "yingfan/m3o-php",
   "description": "M3O client for PHP",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "library",
   "license": "MIT",
   "keywords": ["M3O", "API"],
