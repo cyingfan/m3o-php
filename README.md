@@ -1,6 +1,7 @@
 # m3o-php
 M3O Client for PHP
 
+![Github Build](https://github.com/cyingfan/m3o-php/actions/workflows/php.yml/badge.svg)
 
 ## Installation
 `composer require cyingfan/m3o-php`
