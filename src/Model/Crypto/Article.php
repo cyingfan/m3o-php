@@ -92,7 +92,7 @@ class Article extends AbstractModel
     public function toArray(): array
     {
         return [
-            'date' => $this->getDate(),
+            'date' => $this->getDate()->format('Y-m-d'),
             'description' => $this->getDescription(),
             'source' => $this->getSource(),
             'title' => $this->getTitle(),

@@ -31,7 +31,7 @@ class File extends AbstractService
     public function list(PathInput $input): array
     {
         $response = $this->request('List', $input->toArray());
-        return $this->parseResponseAsModels($response, FileModel::class);
+        return $this->parseResponseAsModels($response, FileModel::class, 'files');
     }
 
     /**

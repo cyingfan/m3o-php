@@ -86,7 +86,7 @@ class QuoteOutput extends AbstractModel
             'askPrice' => $this->getAskPrice(),
             'bidPrice' => $this->getBidPrice(),
             'symbol' => $this->getSymbol(),
-            'timestamp' => $this->getTimestamp()
+            'timestamp' => $this->getTimestamp()->format(DateTimeInterface::ATOM)
         ];
     }
 }

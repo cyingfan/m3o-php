@@ -129,11 +129,11 @@ class File extends AbstractModel
     {
         return [
             'content' => $this->getContent(),
-            'created' => $this->getCreated(),
+            'created' => $this->getCreated()->format(DateTimeInterface::ATOM),
             'metadata' => $this->getMetadata(),
             'path' => $this->getPath(),
             'project' => $this->getProject(),
-            'updated' => $this->getUpdated()
+            'updated' => $this->getUpdated()->format(DateTimeInterface::ATOM)
         ];
     }
 }

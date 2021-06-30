@@ -21,7 +21,7 @@ class Currency extends AbstractService
     public function codes(): array
     {
         $response = $this->request('Codes', []);
-        return $this->parseResponseAsModels($response, Code::class);
+        return $this->parseResponseAsModels($response, Code::class, 'codes');
     }
 
     /**

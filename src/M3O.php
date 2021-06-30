@@ -16,6 +16,10 @@ use M3O\Service\Helloworld as HelloworldService;
 use M3O\Service\Id as IdService;
 use M3O\Service\Image as ImageService;
 use M3O\Service\Ip as IpService;
+use M3O\Service\Location as LocationService;
+use M3O\Service\Otp as OtpService;
+use M3O\Service\Routing as RoutingService;
+use M3O\Service\Rss as RssService;
 use M3O\Util\PhoneValidator;
 
 class M3O
@@ -35,6 +39,10 @@ class M3O
     private ?IdService $idService;
     private ?ImageService $imageService;
     private ?IpService $ipService;
+    private ?LocationService $locationService;
+    private ?OtpService $otpService;
+    private ?RoutingService $routingService;
+    private ?RssService $rssService;
 
     public function __construct(ClientInterface $client, PhoneValidator $phoneValidator)
     {
@@ -137,6 +145,38 @@ class M3O
             $this->ipService = new IpService($this->client);
         }
         return $this->ipService;
+    }
+
+    public function getLocationService(): LocationService
+    {
+        if ($this->locationService === null) {
+            $this->locationService = new LocationService($this->client);
+        }
+        return $this->locationService;
+    }
+
+    public function getOtpService(): OtpService
+    {
+        if ($this->otpService === null) {
+            $this->otpService = new OtpService($this->client);
+        }
+        return $this->otpService;
+    }
+
+    public function getRoutingService(): RoutingService
+    {
+        if ($this->routingService === null) {
+            $this->routingService = new RoutingService($this->client);
+        }
+        return $this->routingService;
+    }
+
+    public function getRssService(): RssService
+    {
+        if ($this->rssService === null) {
+            $this->rssService = new RssService($this->client);
+        }
+        return $this->rssService;
     }
 
 }

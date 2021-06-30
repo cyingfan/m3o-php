@@ -123,7 +123,7 @@ class HistoryOutput extends AbstractModel
     {
         return [
             'close' => $this->getClose(),
-            'date' => $this->getDate(),
+            'date' => $this->getDate()->format('Y-m-d'),
             'high' => $this->getHigh(),
             'low' => $this->getLow(),
             'open' => $this->getOpen(),
