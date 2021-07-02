@@ -31,7 +31,7 @@ class Location extends AbstractService
     public function save(Entity $entity): bool
     {
         $response = $this->request('Save', ['entity' => $entity->toArray()]);
-        return $response->getStatusCode() !== 200;
+        return $response->getStatusCode() === 200;
     }
 
     /**

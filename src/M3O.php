@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace M3O;
 
 use GuzzleHttp\ClientInterface;
+use M3O\Service\Answer as AnswerService;
 use M3O\Service\Cache as CacheService;
 use M3O\Service\Crypto as CryptoService;
 use M3O\Service\Currency as CurrencyService;
 use M3O\Service\Db as DbService;
+use M3O\Service\Email as EmailService;
 use M3O\Service\Emoji as EmojiService;
 use M3O\Service\File as FileService;
 use M3O\Service\Forex as ForexService;
@@ -20,6 +22,9 @@ use M3O\Service\Location as LocationService;
 use M3O\Service\Otp as OtpService;
 use M3O\Service\Routing as RoutingService;
 use M3O\Service\Rss as RssService;
+use M3O\Service\Sentiment as SentimentService;
+use M3O\Service\Sms as SmsService;
+use M3O\Service\Stock as StockService;
 use M3O\Util\PhoneValidator;
 
 class M3O
@@ -27,10 +32,12 @@ class M3O
     private ClientInterface $client;
     private PhoneValidator $phoneValidator;
 
+    private ?AnswerService $answerService;
     private ?CacheService $cacheService;
     private ?CryptoService $cryptoService;
     private ?CurrencyService $currencyService;
     private ?DbService $dbService;
+    private ?EmailService $emailService;
     private ?EmojiService $emojiService;
     private ?FileService $fileService;
     private ?ForexService $forexService;
@@ -43,12 +50,24 @@ class M3O
     private ?OtpService $otpService;
     private ?RoutingService $routingService;
     private ?RssService $rssService;
+    private ?SentimentService $sentimentService;
+    private ?SmsService $smsService;
+    private ?StockService $stockService;
 
     public function __construct(ClientInterface $client, PhoneValidator $phoneValidator)
     {
         $this->client = $client;
         $this->phoneValidator = $phoneValidator;
     }
+
+    public function getAnswerService(): AnswerService
+    {
+        if ($this->answerService === null) {
+            $this->answerService = new AnswerService($this->client);
+        }
+        return $this->answerService;
+    }
+
 
     public function getCacheService(): CacheService
     {
@@ -81,6 +100,14 @@ class M3O
             $this->dbService = new DbService($this->client);
         }
         return $this->dbService;
+    }
+
+    public function getEmailService(): EmailService
+    {
+        if ($this->emailService === null) {
+            $this->emailService = new EmailService($this->client);
+        }
+        return $this->emailService;
     }
 
     public function getEmojiService(): EmojiService
@@ -178,5 +205,30 @@ class M3O
         }
         return $this->rssService;
     }
+
+    public function getSentimentService(): SentimentService
+    {
+        if ($this->sentimentService === null) {
+            $this->sentimentService = new SentimentService($this->client);
+        }
+        return $this->sentimentService;
+    }
+
+    public function getSmsService(): SmsService
+    {
+        if ($this->smsService === null) {
+            $this->smsService = new SmsService($this->client, $this->phoneValidator);
+        }
+        return $this->smsService;
+    }
+
+    public function getStockService(): StockService
+    {
+        if ($this->stockService === null) {
+            $this->stockService = new StockService($this->client);
+        }
+        return $this->stockService;
+    }
+
 
 }

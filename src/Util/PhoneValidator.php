@@ -22,6 +22,6 @@ class PhoneValidator
         } catch (NumberParseException $e) {
             return false;
         }
-        return $this->phoneUtil->isValidNumber($phoneNumber);
+        return $phoneNumber->hasCountryCode() && $this->phoneUtil->isValidNumber($phoneNumber);
     }
 }

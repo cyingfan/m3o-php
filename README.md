@@ -25,10 +25,12 @@ echo $m3o->getHelloworldService()->call('John Doe'), "\n";
 ```
 
 ## Service completion status 
+- [X] [answer](https://m3o.com/answer)
 - [X] [cache](https://m3o.com/cache)
 - [X] [crypto](https://m3o.com/crypto)
 - [X] [currency](https://m3o.com/currency)
 - [X] [db](https://m3o.com/db)
+- [X] [email](https://m3o.com/email)
 - [X] [emoji](https://m3o.com/emoji)
 - [X] [file](https://m3o.com/file)
 - [X] [forex](https://m3o.com/forex)
@@ -41,8 +43,9 @@ echo $m3o->getHelloworldService()->call('John Doe'), "\n";
 - [X] [otp](https://m3o.com/otp)
 - [X] [routing](https://m3o.com/routing)
 - [X] [rss](https://m3o.com/rss)
-- [ ] [sentiment](https://m3o.com/sentiment)
-- [ ] [stock](https://m3o.com/stock)
+- [X] [sentiment](https://m3o.com/sentiment)
+- [X] [sms](https://m3o.com/sms)
+- [X] [stock](https://m3o.com/stock)
 - [ ] [thumbnail](https://m3o.com/thumbnail)
 - [ ] [time](https://m3o.com/time)
 - [ ] [url](https://m3o.com/url)
