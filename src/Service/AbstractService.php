@@ -68,12 +68,12 @@ abstract class AbstractService
     }
 
     /**
-     * @template T
+     * @template T of AbstractModel
      * @param ResponseInterface $response
      * @param class-string<T> $model
      * @return T|null
      */
-    protected function parseResponseAsModel(ResponseInterface $response, string $model)
+    protected function parseResponseAsModel(ResponseInterface $response, string $model, ?string $key = null): ?AbstractModel
     {
         if (!is_subclass_of($model, AbstractModel::class)) {
             throw new InvalidArgumentException('Invalid class string. Class must be instance of ModelInterface');
@@ -85,11 +85,14 @@ abstract class AbstractService
         if ($responseJson === null) {
             return null;
         }
+        if (is_string($key) && is_array($responseJson[$key] ?? null)) {
+            $responseJson = $responseJson[$key];
+        }
         return $model::fromArray($responseJson);
     }
 
     /**
-     * @template T
+     * @template T of AbstractModel
      * @param ResponseInterface $response
      * @param class-string<T> $model
      * @return T[]

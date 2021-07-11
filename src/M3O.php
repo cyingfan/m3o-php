@@ -25,6 +25,11 @@ use M3O\Service\Rss as RssService;
 use M3O\Service\Sentiment as SentimentService;
 use M3O\Service\Sms as SmsService;
 use M3O\Service\Stock as StockService;
+use M3O\Service\Thumbnail as ThumbnailService;
+use M3O\Service\Time as TimeService;
+use M3O\Service\Url as UrlService;
+use M3O\Service\User as UserService;
+use M3O\Service\Weather as WeatherService;
 use M3O\Util\PhoneValidator;
 
 class M3O
@@ -53,6 +58,11 @@ class M3O
     private ?SentimentService $sentimentService;
     private ?SmsService $smsService;
     private ?StockService $stockService;
+    private ?ThumbnailService $thumbnailService;
+    private ?TimeService $timeService;
+    private ?UrlService $urlService;
+    private ?UserService $userService;
+    private ?WeatherService $weatherService;
 
     public function __construct(ClientInterface $client, PhoneValidator $phoneValidator)
     {
@@ -228,6 +238,45 @@ class M3O
             $this->stockService = new StockService($this->client);
         }
         return $this->stockService;
+    }
+
+    public function getThumbnailService(): ThumbnailService
+    {
+        if ($this->thumbnailService === null) {
+            $this->thumbnailService = new ThumbnailService($this->client);
+        }
+        return $this->thumbnailService;
+    }
+
+    public function getTimeService(): TimeService
+    {
+        if ($this->timeService === null) {
+            $this->timeService = new TimeService($this->client);
+        }
+        return $this->timeService;
+    }
+
+    public function getUrlService(): UrlService
+    {
+        if ($this->urlService === null) {
+            $this->urlService = new UrlService($this->client);
+        }
+        return $this->urlService;
+    }
+
+    public function getUserService(): UserService
+    {
+        if ($this->userService === null) {
+            $this->userService = new UserService($this->client);
+        }
+        return $this->userService;
+    }
+    public function getWeatherService(): WeatherService
+    {
+        if ($this->weatherService === null) {
+            $this->weatherService = new WeatherService($this->client);
+        }
+        return $this->weatherService;
     }
 
 
